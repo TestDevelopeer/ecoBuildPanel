@@ -1076,8 +1076,7 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/horizontal-menu.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/forms/form-quill-editor.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/app-email.min.css">
     <!-- END: Page CSS-->
 @endsection

@@ -35,40 +35,43 @@
     <!-- END: Custom CSS-->
 </head>
 <!-- END: Head-->
+@if (isset($arUser))
 
-<body class="horizontal-layout horizontal-menu content-left-sidebar navbar-floating footer-static" data-open="hover" data-menu="horizontal-menu" data-col="content-left-sidebar">
-    @include('layouts.header')
-    @include('layouts.menu')
-    @yield('content')
+    <body class="horizontal-layout horizontal-menu content-left-sidebar navbar-floating footer-static" data-open="hover"
+        data-menu="horizontal-menu" data-col="content-left-sidebar">
+        @include('layouts.header')
+        @include('layouts.menu')
+    @else
+
+        <body class="horizontal-layout horizontal-menu blank-page navbar-floating footer-static  " data-open="hover"
+            data-menu="horizontal-menu" data-col="blank-page">
+@endif
+
+@yield('content')
+
+@if (isset($arUser))
     @include('layouts.footer')
-    <!-- BEGIN: Vendor JS-->
-    <script src="/app-assets/vendors/js/vendors.min.js"></script>
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
-    <script src="/app-assets/vendors/js/editors/quill/katex.min.js"></script>
-    <script src="/app-assets/vendors/js/editors/quill/highlight.min.js"></script>
-    <script src="/app-assets/vendors/js/editors/quill/quill.min.js"></script>
-    <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
-    <script src="/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="/app-assets/js/core/app-menu.min.js"></script>
-    <script src="/app-assets/js/core/app.min.js"></script>
-    <script src="/app-assets/js/scripts/customizer.min.js"></script>
-    <!-- END: Theme JS-->
-
-    @yield('otherScripts')
-
-    <script>
-        $(window).on('load',  function(){
-            if (feather) {
-            feather.replace({ width: 14, height: 14 });
-            }
-        })
-    </script>
+@endif
+<!-- BEGIN: Vendor JS-->
+<script src="/app-assets/vendors/js/vendors.min.js"></script>
+<!-- BEGIN Vendor JS-->
+@yield('vendorScripts')
+<!-- BEGIN: Theme JS-->
+<script src="/app-assets/js/core/app-menu.min.js"></script>
+<script src="/app-assets/js/core/app.min.js"></script>
+<script src="/app-assets/js/scripts/customizer.min.js"></script>
+<!-- END: Theme JS-->
+@yield('otherScripts')
+<script>
+    $(window).on('load', function() {
+        if (feather) {
+            feather.replace({
+                width: 14,
+                height: 14
+            });
+        }
+    })
+</script>
 </body>
 
 </html>
