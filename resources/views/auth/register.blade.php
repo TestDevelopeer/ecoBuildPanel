@@ -117,18 +117,18 @@
                                             <form>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-1">
-                                                        <label class="form-label" for="first_name">Фамилия</label>
-                                                        <input type="text" name="first_name" id="first_name"
+                                                        <label class="form-label" for="last_name">Фамилия</label>
+                                                        <input type="text" name="last_name" id="last_name"
                                                             class="form-control" placeholder="Ваша фамилия">
                                                     </div>
                                                     <div class="col-md-4 mb-1">
-                                                        <label class="form-label" for="second_name">Имя</label>
-                                                        <input type="text" name="second_name" id="second_name"
+                                                        <label class="form-label" for="first_name">Имя</label>
+                                                        <input type="text" name="first_name" id="first_name"
                                                             class="form-control" placeholder="Ваше имя">
                                                     </div>
                                                     <div class="col-md-4 mb-1">
-                                                        <label class="form-label" for="last_name">Отчество</label>
-                                                        <input type="text" name="last_name" id="last_name"
+                                                        <label class="form-label" for="patronymic">Отчество</label>
+                                                        <input type="text" name="patronymic" id="patronymic"
                                                             class="form-control" placeholder="Ваше отчество">
                                                     </div>
                                                 </div>
@@ -303,6 +303,8 @@
     <script src="/app-assets/vendors/js/forms/cleave/cleave.min.js"></script>
     <script src="/app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
     <script src="/app-assets/vendors/js/forms/jquery.maskedinput.min.js"></script>
+    <script src="/app-assets/vendors/js/forms/sex_by_russian_name.js"></script>
+    <script src="/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
     <!-- END: Page Vendor JS-->
 @endsection
 @section('otherScripts')
