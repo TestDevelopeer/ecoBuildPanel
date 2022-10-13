@@ -65,7 +65,5 @@
     <!-- BEGIN: Page JS-->
     <script src="/assets/js/pages/questions/questions-tour.js"></script>
     <script src="/app-assets/js/scripts/extensions/ext-component-media-player.min.js"></script>
-
-
     <!-- END: Page JS-->
 @endsection

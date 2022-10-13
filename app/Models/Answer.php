@@ -22,4 +22,11 @@ class Answer
 			'user_id' => $userId
 		]);
 	}
+
+	public function getAnswersByUserId($userId)
+	{
+		return DB::table('user_answers')
+			->where('user_id', '=', $userId)
+			->get();
+	}
 }
