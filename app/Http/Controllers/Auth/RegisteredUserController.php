@@ -20,6 +20,7 @@ class RegisteredUserController extends Controller
 	 */
 	public function create()
 	{
+		view()->share('title', 'Регистрация | ИСОиП АБИТУРИЕНТ');
 		return view('auth.register');
 	}
 

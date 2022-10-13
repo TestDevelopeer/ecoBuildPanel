@@ -56,12 +56,11 @@
                                 </a>
 
                                 <h4 class="card-title mb-1">Добро пожаловать! 👋</h4>
-                                <p class="card-text mb-2">Войдите в свой аккаунт чтобы получить доступ к личному кабинету
+                                <p class="card-text mb-2">
+                                    Войдите в свой аккаунт чтобы получить доступ к личному кабинету
                                 </p>
-
                                 <!-- Session Status -->
                                 <x-auth-session-status class="mb-4" :status="session('status')" />
-
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     @if ($errors->any())
@@ -82,7 +81,6 @@
                                         <x-text-input id="email" class="form-control" type="email" name="email"
                                             :value="old('email')" required autofocus placeholder="john@example.com" />
                                     </div>
-
                                     <!-- Password -->
                                     <div class="mb-1">
                                         <div class="d-flex justify-content-between">
@@ -94,9 +92,7 @@
                                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
                                             <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
-                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                     </div>
-
                                     <div class="mb-1">
                                         <div class="form-check">
                                             <input id="remember_me" type="checkbox" class="form-check-input"
@@ -105,10 +101,11 @@
                                             </label>
                                         </div>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary w-100" tabindex="4">Войти</button>
+                                    <button type="submit" class="btn btn-primary w-100" tabindex="4">
+                                        <i class="fa-light fa-right-to-bracket"></i>
+                                        Войти
+                                    </button>
                                 </form>
-
                                 <p class="text-center mt-2">
                                     <span>Нет аккаунта?</span>
                                     <a href="{{ route('register') }}">
@@ -120,7 +117,6 @@
                         <!-- /Login basic -->
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

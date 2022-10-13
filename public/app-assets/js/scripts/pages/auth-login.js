@@ -25,12 +25,21 @@ $(function () {
 				$(element).valid();
 			},
 			rules: {
-				'login-email': {
+				'email': {
 					required: true,
 					email: true
 				},
-				'login-password': {
+				'password': {
 					required: true
+				}
+			},
+			messages: {
+				'email': {
+					required: 'Введите Email',
+					email: 'Неверный формат Email'
+				},
+				'password': {
+					required: 'Введите пароль'
 				}
 			}
 		});
