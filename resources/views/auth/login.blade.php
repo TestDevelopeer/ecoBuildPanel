@@ -1,57 +1,146 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@extends('layouts.app')
+@section('content')
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
             </div>
+            <div class="content-body">
+                <div class="auth-wrapper auth-basic px-2">
+                    <div class="auth-inner my-2">
+                        <!-- Login basic -->
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <a href="index.html.htm" class="brand-logo">
+                                    <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
+                                        <defs>
+                                            <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%"
+                                                x2="50%" y2="89.4879456%">
+                                                <stop stop-color="#000000" offset="0%"></stop>
+                                                <stop stop-color="#FFFFFF" offset="100%"></stop>
+                                            </lineargradient>
+                                            <lineargradient id="linearGradient-2" x1="64.0437835%" y1="46.3276743%"
+                                                x2="37.373316%" y2="100%">
+                                                <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
+                                                <stop stop-color="#FFFFFF" offset="100%"></stop>
+                                            </lineargradient>
+                                        </defs>
+                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                            fill-rule="evenodd">
+                                            <g id="Artboard" transform="translate(-400.000000, -178.000000)">
+                                                <g id="Group" transform="translate(400.000000, 178.000000)">
+                                                    <path class="text-primary" id="Path"
+                                                        d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z"
+                                                        style="fill: currentColor"></path>
+                                                    <path id="Path1"
+                                                        d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z"
+                                                        fill="url(#linearGradient-1)" opacity="0.2"></path>
+                                                    <polygon id="Path-2" fill="#000000" opacity="0.049999997"
+                                                        points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325">
+                                                    </polygon>
+                                                    <polygon id="Path-21" fill="#000000" opacity="0.099999994"
+                                                        points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338">
+                                                    </polygon>
+                                                    <polygon id="Path-3" fill="url(#linearGradient-2)"
+                                                        opacity="0.099999994"
+                                                        points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288">
+                                                    </polygon>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <h2 class="brand-text text-primary ms-1">ИСОиП АБИТУРИЕНТ</h2>
+                                </a>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                                <h4 class="card-title mb-1">Добро пожаловать! 👋</h4>
+                                <p class="card-text mb-2">Войдите в свой аккаунт чтобы получить доступ к личному кабинету
+                                </p>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                                <!-- Session Status -->
+                                <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger" role="alert">
+                                            <h4 class="alert-heading">Ошибка</h4>
+                                            <div class="alert-body">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <!-- Email Address -->
+                                    <div class="mb-1">
+                                        <label for="login-email" class="form-label">Email</label>
+                                        <x-text-input id="email" class="form-control" type="email" name="email"
+                                            :value="old('email')" required autofocus placeholder="john@example.com" />
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="mb-1">
+                                        <div class="d-flex justify-content-between">
+                                            <x-input-label class="form-label" for="password" :value="__('Пароль')" />
+                                        </div>
+                                        <div class="input-group input-group-merge form-password-toggle">
+                                            <x-text-input id="password" class="form-control form-control-merge"
+                                                type="password" name="password" required autocomplete="current-password"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                            <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                        </div>
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <div class="form-check">
+                                            <input id="remember_me" type="checkbox" class="form-check-input"
+                                                name="remember">
+                                            <label class="form-check-label" for="remember_me"> {{ __('Запомнить меня') }}
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100" tabindex="4">Войти</button>
+                                </form>
+
+                                <p class="text-center mt-2">
+                                    <span>Нет аккаунта?</span>
+                                    <a href="{{ route('register') }}">
+                                        <span>Регистрация</span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /Login basic -->
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+@endsection
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@section('otherStyles')
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/forms/form-wizard.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/authentication.css">
+    <!-- END: Page CSS-->
+@endsection
+@section('vendorScripts')
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <!-- END: Page Vendor JS-->
+@endsection
+@section('otherScripts')
+    <!-- BEGIN: Page JS-->
+    <script src="/app-assets/js/scripts/pages/auth-login.js"></script>
+    <!-- END: Page JS-->
+@endsection

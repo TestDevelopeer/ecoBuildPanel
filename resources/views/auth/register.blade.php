@@ -11,7 +11,7 @@
                 <div class="auth-wrapper auth-cover">
                     <div class="auth-inner row m-0">
                         <!-- Brand logo-->
-                        <a class="brand-logo" href="index.html">
+                        <a class="brand-logo" href="/">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
                                 <defs>
@@ -47,7 +47,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <h2 class="brand-text text-primary ms-1">Vuexy</h2>
+                            <h2 class="brand-text text-primary ms-1">ИСОиП АБИТУРИЕНТ</h2>
                         </a>
                         <!-- /Brand logo-->
 
@@ -69,7 +69,7 @@
                                             id="account-details-trigger">
                                             <button type="button" class="step-trigger">
                                                 <span class="bs-stepper-box">
-                                                    <i data-feather="home" class="font-medium-3"></i>
+                                                    <i class="fa-light fa-user"></i>
                                                 </span>
                                                 <span class="bs-stepper-label">
                                                     <span class="bs-stepper-title">Основное</span>
@@ -84,7 +84,7 @@
                                             id="personal-info-trigger">
                                             <button type="button" class="step-trigger">
                                                 <span class="bs-stepper-box">
-                                                    <i data-feather="user" class="font-medium-3"></i>
+                                                    <i class="fa-light fa-school"></i>
                                                 </span>
                                                 <span class="bs-stepper-label">
                                                     <span class="bs-stepper-title">Образование</span>
@@ -98,7 +98,7 @@
                                         <div class="step" data-target="#billing" role="tab" id="billing-trigger">
                                             <button type="button" class="step-trigger">
                                                 <span class="bs-stepper-box">
-                                                    <i data-feather="credit-card" class="font-medium-3"></i>
+                                                    <i class="fa-light fa-sliders-up"></i>
                                                 </span>
                                                 <span class="bs-stepper-label">
                                                     <span class="bs-stepper-title">Аккаунт</span>
@@ -107,167 +107,174 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="bs-stepper-content px-0 mt-4">
-                                        
-                                            <div id="account-details" class="content" role="tabpanel"
-                                                aria-labelledby="account-details-trigger">
-                                                <div class="content-header mb-2">
-                                                    <h2 class="fw-bolder mb-75">Основная информация</h2>
-                                                    <span>Заполните поля ниже чтобы перейти на следующую форму.</span>
-                                                </div>
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-md-4 mb-1">
-                                                            <label class="form-label" for="first_name">Фамилия</label>
-                                                            <input type="text" name="first_name" id="first_name"
-                                                                class="form-control" placeholder="Ваша фамилия">
-                                                        </div>
-                                                        <div class="col-md-4 mb-1">
-                                                            <label class="form-label" for="second_name">Имя</label>
-                                                            <input type="text" name="second_name" id="second_name"
-                                                                class="form-control" placeholder="Ваше имя">
-                                                        </div>
-                                                        <div class="col-md-4 mb-1">
-                                                            <label class="form-label" for="last_name">Отчество</label>
-                                                            <input type="text" name="last_name" id="last_name"
-                                                                class="form-control" placeholder="Ваше отчество">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-4 mb-1">
-                                                            <label class="form-label" for="city">Город</label>
-                                                            <input type="text" name="city" id="city"
-                                                                class="form-control" placeholder="Из какого вы города?">
-                                                        </div>
-                                                        <div class="col-md-4 mb-1">
-                                                            <label class="form-label" for="phone">Телефон</label>
-                                                            <input type="text" name="phone" id="phone"
-                                                                class="form-control mobile-number-mask"
-                                                                placeholder="+7(000)000-00-00">
-                                                        </div>
-                                                        <div class="col-md-4 mb-1">
-                                                            <label class="form-label" for="social">Соц. сеть</label>
-                                                            <input type="text" name="social" id="social"
-                                                                class="form-control" placeholder="Ссылка, id"
-                                                                aria-label="john.doe">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <div class="d-flex justify-content-between mt-2">
-                                                    <button class="btn btn-outline-secondary btn-prev" disabled="">
-                                                        <i data-feather="chevron-left"
-                                                            class="align-middle me-sm-25 me-0"></i>
-                                                        <span class="align-middle d-sm-inline-block d-none">Назад</span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary btn-next">
-                                                        <span class="align-middle d-sm-inline-block d-none">Далее</span>
-                                                        <i data-feather="chevron-right"
-                                                            class="align-middle ms-sm-25 ms-0"></i>
-                                                    </button>
-                                                </div>
+                                    <div class="bs-stepper-content px-0 mt-2">
+                                        <div id="account-details" class="content" role="tabpanel"
+                                            aria-labelledby="account-details-trigger">
+                                            <div class="content-header mb-2">
+                                                <h2 class="fw-bolder mb-75">Основная информация</h2>
+                                                <span>Заполните поля ниже чтобы перейти на следующую форму.</span>
                                             </div>
-                                            <div id="personal-info" class="content" role="tabpanel"
-                                                aria-labelledby="personal-info-trigger">
-                                                <div class="content-header mb-2">
-                                                    <h2 class="fw-bolder mb-75">Образование</h2>
-                                                    <span>Заполните поля ниже чтобы перейти на следующую форму.</span>
-                                                </div>
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="mb-1 col-md-6">
-                                                            <label class="form-label" for="school">Учебное
-                                                                заведение</label>
-                                                            <input type="text" name="school" id="school"
-                                                                class="form-control" placeholder="Где вы учитесь?">
-                                                        </div>
-                                                        <div class="mb-1 col-md-6">
-                                                            <label class="form-label" for="class">Класс / Курс</label>
-                                                            <input type="text" name="class" id="class"
-                                                                class="form-control"
-                                                                placeholder="В каком классе / На каком курсе?">
-                                                        </div>
-                                                        <div class="col-md-6 mb-1">
-                                                            <label class="form-label" for="teacher_name">ФИО
-                                                                руководителя</label>
-                                                            <input type="text" name="teacher_name" id="teacher_name"
-                                                                class="form-control"
-                                                                placeholder="Как зовут вашего руководителя?">
-                                                        </div>
-                                                        <div class="col-md-6 mb-1">
-                                                            <label class="form-label" for="teacher_job">Должность
-                                                                руководителя</label>
-                                                            <input type="text" name="teacher_job" id="teacher_job"
-                                                                class="form-control"
-                                                                placeholder="Должность вашего руководителя">
-                                                        </div>
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-1">
+                                                        <label class="form-label" for="first_name">Фамилия</label>
+                                                        <input type="text" name="first_name" id="first_name"
+                                                            class="form-control" placeholder="Ваша фамилия">
                                                     </div>
-                                                </form>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label class="form-label" for="second_name">Имя</label>
+                                                        <input type="text" name="second_name" id="second_name"
+                                                            class="form-control" placeholder="Ваше имя">
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label class="form-label" for="last_name">Отчество</label>
+                                                        <input type="text" name="last_name" id="last_name"
+                                                            class="form-control" placeholder="Ваше отчество">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-1">
+                                                        <label class="form-label" for="city">Город</label>
+                                                        <input type="text" name="city" id="city"
+                                                            class="form-control" placeholder="Из какого вы города?">
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label class="form-label" for="phone">Телефон</label>
+                                                        <input type="text" name="phone" id="phone"
+                                                            class="form-control mobile-number-mask phone_mask"
+                                                            placeholder="+7(___) ___-__-__">
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label class="form-label" for="social">Соц. сеть</label>
+                                                        <input type="text" name="social" id="social"
+                                                            class="form-control" placeholder="Ссылка, id"
+                                                            aria-label="john.doe">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="d-flex justify-content-between mt-2">
+                                                <button class="btn btn-outline-secondary btn-prev" disabled="">
+                                                    <i data-feather="chevron-left" class="align-middle me-sm-25 me-0"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Назад</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary btn-next">
+                                                    <span class="align-middle d-sm-inline-block d-none">Далее</span>
+                                                    <i data-feather="chevron-right"
+                                                        class="align-middle ms-sm-25 ms-0"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="personal-info" class="content" role="tabpanel"
+                                            aria-labelledby="personal-info-trigger">
+                                            <div class="content-header mb-2">
+                                                <h2 class="fw-bolder mb-75">Образование</h2>
+                                                <span>Заполните поля ниже чтобы перейти на следующую форму.</span>
+                                            </div>
+                                            <form>
+                                                <div class="row">
+                                                    <div class="mb-1 col-md-6">
+                                                        <label class="form-label" for="school">Учебное
+                                                            заведение</label>
+                                                        <input type="text" name="school" id="school"
+                                                            class="form-control" placeholder="Где вы учитесь?">
+                                                    </div>
+                                                    <div class="mb-1 col-md-6">
+                                                        <label class="form-label" for="class">Класс / Курс</label>
+                                                        <input type="number" min="1" max="11"
+                                                            name="class" id="class" class="form-control"
+                                                            placeholder="В каком классе / На каком курсе?">
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="teacher_name">ФИО
+                                                            руководителя</label>
+                                                        <input type="text" name="teacher_name" id="teacher_name"
+                                                            class="form-control"
+                                                            placeholder="Как зовут вашего руководителя?">
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="teacher_job">Должность
+                                                            руководителя</label>
+                                                        <input type="text" name="teacher_job" id="teacher_job"
+                                                            class="form-control"
+                                                            placeholder="Должность вашего руководителя">
+                                                    </div>
+                                                </div>
+                                            </form>
 
-                                                <div class="d-flex justify-content-between mt-2">
-                                                    <button class="btn btn-primary btn-prev">
-                                                        <i data-feather="chevron-left"
-                                                            class="align-middle me-sm-25 me-0"></i>
-                                                        <span class="align-middle d-sm-inline-block d-none">Назад</span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary btn-next">
-                                                        <span class="align-middle d-sm-inline-block d-none">Далее</span>
-                                                        <i data-feather="chevron-right"
-                                                            class="align-middle ms-sm-25 ms-0"></i>
-                                                    </button>
-                                                </div>
+                                            <div class="d-flex justify-content-between mt-2">
+                                                <button class="btn btn-primary btn-prev">
+                                                    <i data-feather="chevron-left" class="align-middle me-sm-25 me-0"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Назад</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary btn-next">
+                                                    <span class="align-middle d-sm-inline-block d-none">Далее</span>
+                                                    <i data-feather="chevron-right"
+                                                        class="align-middle ms-sm-25 ms-0"></i>
+                                                </button>
                                             </div>
-                                            <div id="billing" class="content" role="tabpanel"
-                                                aria-labelledby="billing-trigger">
-                                                <div class="content-header mb-2">
-                                                    <h2 class="fw-bolder mb-75">Данные аккаунта</h2>
-                                                    <span>Заполните поля ниже чтобы закончить регистрацию.</span>
+                                        </div>
+                                        <div id="billing" class="content" role="tabpanel"
+                                            aria-labelledby="billing-trigger">
+                                            <div class="content-header mb-2">
+                                                <h2 class="fw-bolder mb-75">Данные аккаунта</h2>
+                                                <span>Заполните поля ниже чтобы закончить регистрацию.</span>
+                                            </div>
+                                            <form>
+                                                <div class="row">
+                                                    <div class="mb-1 col-md-12">
+                                                        <label class="form-label" for="email">Email</label>
+                                                        <input type="email" name="email" id="email"
+                                                            class="form-control" placeholder="Ваш Email">
+                                                    </div>
+                                                    <div class="mb-1 col-md-6">
+                                                        <label class="form-label" for="password">Пароль</label>
+                                                        <input type="password" name="password" id="password"
+                                                            class="form-control" placeholder="Придумайте пароль">
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="repeat_password">Повторите
+                                                            пароль</label>
+                                                        <input type="password" name="repeat_password"
+                                                            id="repeat_password" class="form-control"
+                                                            placeholder="Повторите ваш пароль">
+                                                    </div>
                                                 </div>
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="mb-1 col-md-12">
-                                                            <label class="form-label" for="email">Email</label>
-                                                            <input type="email" name="email" id="email"
-                                                                class="form-control" placeholder="Ваш Email">
-                                                        </div>
-                                                        <div class="mb-1 col-md-6">
-                                                            <label class="form-label" for="password">Пароль</label>
-                                                            <input type="password" name="password" id="password"
-                                                                class="form-control" placeholder="Придумайте пароль">
-                                                        </div>
-                                                        <div class="col-md-6 mb-1">
-                                                            <label class="form-label" for="repeat_password">Повторите
-                                                                пароль</label>
-                                                            <input type="password" name="repeat_password"
-                                                                id="repeat_password" class="form-control"
-                                                                placeholder="Повторите ваш пароль">
-                                                        </div>
+                                                <div class="mb-1">
+                                                    <div class="form-check">
+                                                        <input checked disabled class="form-check-input" type="checkbox"
+                                                            id="register-privacy-policy" tabindex="4">
+                                                        <label class="form-check-label" for="register-privacy-policy">
+                                                            Регистрируясь вы принимаете условия <a
+                                                                href="#">пользовательского соглашения</a>.
+                                                        </label>
                                                     </div>
-                                                    <div class="mb-1">
-                                                        <div class="form-check">
-                                                            <input checked disabled class="form-check-input"
-                                                                type="checkbox" id="register-privacy-policy"
-                                                                tabindex="4">
-                                                            <label class="form-check-label" for="register-privacy-policy">
-                                                                Регистрируясь вы принимаете условия <a
-                                                                    href="#">пользовательского соглашения</a>.
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                </div>
+                                            </form>
 
-                                                <div class="d-flex justify-content-between mt-1">
-                                                    <button class="btn btn-primary btn-prev">
-                                                        <i data-feather="chevron-left"
-                                                            class="align-middle me-sm-25 me-0"></i>
-                                                        <span class="align-middle d-sm-inline-block d-none">Назад</span>
-                                                    </button>
-                                                    <button class="btn btn-success btn-submit">
-                                                        <i data-feather="check" class="align-middle me-sm-25 me-0"></i>
-                                                        <span
-                                                            class="align-middle d-sm-inline-block d-none">Продолжить</span>
-                                                    </button>
-                                                </div>
+                                            <div class="d-flex justify-content-between mt-1">
+                                                <button class="btn btn-primary btn-prev">
+                                                    <i data-feather="chevron-left" class="align-middle me-sm-25 me-0"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Назад</span>
+                                                </button>
+                                                <button class="btn btn-success btn-submit">
+                                                    <i data-feather="check" class="align-middle me-sm-25 me-0"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Продолжить</span>
+                                                </button>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2 mt-2">
+                                        <a type="button" href="{{ route('login') }}"
+                                            class="btn btn-outline-primary waves-effect">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-home me-25">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                            </svg>
+                                            <span>Вход</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -290,16 +297,21 @@
 @endsection
 @section('vendorScripts')
     <!-- BEGIN: Page Vendor JS-->
-    <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
     <script src="/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script>
     <script src="/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <script src="/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
     <script src="/app-assets/vendors/js/forms/cleave/cleave.min.js"></script>
     <script src="/app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
+    <script src="/app-assets/vendors/js/forms/jquery.maskedinput.min.js"></script>
     <!-- END: Page Vendor JS-->
 @endsection
 @section('otherScripts')
     <!-- BEGIN: Page JS-->
     <script src="/app-assets/js/scripts/pages/auth-register.min.js"></script>
     <!-- END: Page JS-->
+    <script>
+        jQuery(function($) {
+            $(".phone_mask").mask("+7(999) 999-99-99");
+        });
+    </script>
 @endsection

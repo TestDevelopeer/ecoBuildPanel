@@ -13,50 +13,50 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('auth.register');
-    }
+	/**
+	 * Display the registration view.
+	 *
+	 * @return \Illuminate\View\View
+	 */
+	public function create()
+	{
+		return view('auth.register');
+	}
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required'],
-        ]);
+	/**
+	 * Handle an incoming registration request.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * @throws \Illuminate\Validation\ValidationException
+	 */
+	public function store(Request $request)
+	{
+		$request->validate([
+			'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+			'password' => ['required', 'min:8'],
+		]);
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'second_name' => $request->second_name,
-            'last_name' => $request->last_name,
-            'city' => $request->city,
-            'phone' => $request->phone,
-            'social' => $request->social,
-            'school' => $request->school,
-            'class' => $request->class,
-            'teacher_name' => $request->teacher_name,
-            'teacher_job' => $request->teacher_job,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+		$user = User::create([
+			'first_name' => $request->first_name,
+			'second_name' => $request->second_name,
+			'last_name' => $request->last_name,
+			'city' => $request->city,
+			'phone' => $request->phone,
+			'social' => $request->social,
+			'school' => $request->school,
+			'class' => $request->class,
+			'teacher_name' => $request->teacher_name,
+			'teacher_job' => $request->teacher_job,
+			'email' => $request->email,
+			'password' => Hash::make($request->password),
+		]);
 
-        event(new Registered($user));
+		event(new Registered($user));
 
-        Auth::login($user);
+		Auth::login($user);
 
-        echo json_encode(RouteServiceProvider::HOME, JSON_UNESCAPED_UNICODE);
-    }
+		echo json_encode(RouteServiceProvider::HOME, JSON_UNESCAPED_UNICODE);
+	}
 }

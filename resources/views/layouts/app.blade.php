@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/select/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/all.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -27,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/dark-layout.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/bordered-layout.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/semi-dark-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/horizontal-menu.min.css">
 
     @yield('otherStyles')
 
@@ -61,6 +63,8 @@
 <script src="/app-assets/js/core/app.min.js"></script>
 <script src="/app-assets/js/scripts/customizer.min.js"></script>
 <!-- END: Theme JS-->
+<script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
+
 @yield('otherScripts')
 <script>
     $(window).on('load', function() {
