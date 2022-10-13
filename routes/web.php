@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth', 'isAuth'])->group(function () {
-    Route::get('/', function () {
-        return view('pages.home.home');
-    });
+	Route::get('/', function () {
+		return view('pages.home.home');
+	});
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+	Route::get('/questions/{type}', [QuestionController::class, 'Index'])->name('questions');
+	Route::post('/questions/save', [QuestionController::class, 'save'])->name('questions');
+
+	Route::get('/user/result', [UsersController::class, 'Result'])->name('result');
 });
 require __DIR__ . '/auth.php';

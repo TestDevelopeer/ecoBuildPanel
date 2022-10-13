@@ -14,3 +14,8 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 	padding: 0px;
 	margin: 0px;
 }
+
+.answer_buttons {
+	display: flex;
+	justify-content: flex-end;
+}

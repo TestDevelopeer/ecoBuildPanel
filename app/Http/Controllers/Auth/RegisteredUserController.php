@@ -10,9 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Users;
 
 class RegisteredUserController extends Controller
 {
+	public $users;
+
+	public function __construct()
+	{
+		$this->users = new Users;
+	}
+
 	/**
 	 * Display the registration view.
 	 *
@@ -52,7 +60,8 @@ class RegisteredUserController extends Controller
 			'teacher_job' => $request->teacher_job,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
-			'sex' => $request->sex
+			'sex' => $request->sex,
+			'ip' => $this->users->getIp()
 		]);
 
 		event(new Registered($user));

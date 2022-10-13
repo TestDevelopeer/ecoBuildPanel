@@ -27,7 +27,12 @@ return new class extends Migration
 			$table->string('teacher_job');
 			$table->string('email');
 			$table->string('password');
-			$table->string('sex');
+			$table->tinyInteger('sex');
+			$table->ipAddress('ip');
+			$table->tinyInteger('percent')->default(0);
+			$table->dateTime('end_test_build_date')->default(NULL);
+			$table->dateTime('end_test_eco_date')->default(NULL);
+			$table->dateTime('upload_date')->default(NULL);
 			$table->rememberToken();
 			$table->timestamps();
 		});
