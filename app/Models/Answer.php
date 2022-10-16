@@ -29,4 +29,12 @@ class Answer
 			->where('user_id', '=', $userId)
 			->get();
 	}
+
+	public function checkIsAnswerTrue($answerId)
+	{
+		return DB::table('answers')
+			->select('answer_true')
+			->where('id', '=', $answerId)
+			->first();
+	}
 }

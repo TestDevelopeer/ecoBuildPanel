@@ -10,7 +10,7 @@ class Question
 	{
 		return DB::table('questions')
 			->where('question_view', '=', $type)
-			//->inRandomOrder()
+			->inRandomOrder()
 			->limit($limit)
 			->get();
 	}

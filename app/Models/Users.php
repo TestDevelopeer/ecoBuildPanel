@@ -21,11 +21,12 @@ class Users
 		return request()->ip(); // it will return server ip when no client ip found
 	}
 
-	public function setEndTestDate($userId, $type)
+	public function setEndTestDate($userId, $type, $percent)
 	{
 		return DB::table('users')
 			->where('id', '=', $userId)
 			->update([
+				"percent_{$type}" => $percent,
 				"end_test_{$type}_date" => date("Y-m-d H:i:s")
 			]);
 	}

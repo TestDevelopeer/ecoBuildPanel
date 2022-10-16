@@ -45,7 +45,8 @@ class UsersController extends Controller
 			}
 		}
 		return view('pages.users.result', [
-			'allQuestions' => $allQuestions
+			'allQuestions' => $allQuestions,
+			'user' => $user
 		]);
 	}
 }

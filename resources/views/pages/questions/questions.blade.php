@@ -61,9 +61,8 @@
     <script src="/app-assets/vendors/js/extensions/shepherd.min.js"></script>
 @endsection
 @section('otherScripts')
-    <script src="/assets/js/pages/questions/questions.js"></script>
     <!-- BEGIN: Page JS-->
     <script src="/assets/js/pages/questions/questions-tour.js"></script>
-    <script src="/app-assets/js/scripts/extensions/ext-component-media-player.min.js"></script>
     <!-- END: Page JS-->
+    <script src="/assets/js/pages/questions/questions.js"></script>
 @endsection

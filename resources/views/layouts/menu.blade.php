@@ -56,15 +56,17 @@
                 <li class="dropdown nav-item" data-menu="dropdown"><a
                         class="dropdown-toggle nav-link d-flex align-items-center" href="index.html"
                         data-bs-toggle="dropdown"><i data-feather="home"></i><span
-                            data-i18n="Dashboards">Dashboards</span></a>
+                            data-i18n="Dashboards">Тестирование</span></a>
                     <ul class="dropdown-menu" data-bs-popper="none">
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center"
-                                href="dashboard-analytics.html" data-bs-toggle="" data-i18n="Analytics"><i
-                                    data-feather="activity"></i><span data-i18n="Analytics">Analytics</span></a>
+                                href="{{ route('questions', ['type' => 'build']) }}" data-bs-toggle=""
+                                data-i18n="Analytics"><i data-feather="activity"></i><span
+                                    data-i18n="Analytics">Строительство</span></a>
                         </li>
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center"
-                                href="dashboard-ecommerce.html" data-bs-toggle="" data-i18n="eCommerce"><i
-                                    data-feather="shopping-cart"></i><span data-i18n="eCommerce">eCommerce</span></a>
+                                href="{{ route('questions', ['type' => 'eco']) }}" data-bs-toggle=""
+                                data-i18n="eCommerce"><i data-feather="shopping-cart"></i><span
+                                    data-i18n="eCommerce">Экология</span></a>
                         </li>
                     </ul>
                 </li>

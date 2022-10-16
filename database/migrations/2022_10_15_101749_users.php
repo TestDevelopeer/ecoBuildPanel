@@ -29,10 +29,11 @@ return new class extends Migration
 			$table->string('password');
 			$table->tinyInteger('sex');
 			$table->ipAddress('ip');
-			$table->tinyInteger('percent')->default(0);
-			$table->dateTime('end_test_build_date')->default(NULL);
-			$table->dateTime('end_test_eco_date')->default(NULL);
-			$table->dateTime('upload_date')->default(NULL);
+			$table->tinyInteger('percent_build')->default(0);
+			$table->tinyInteger('percent_eco')->default(0);
+			$table->dateTime('end_test_build_date')->nullable();
+			$table->dateTime('end_test_eco_date')->nullable();
+			$table->dateTime('upload_date')->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});

@@ -19,3 +19,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 	display: flex;
 	justify-content: flex-end;
 }
+.question_answer .question_attach {
+	display: flex;
+	justify-content: center;
+}
+.question_answer .question_attach img {
+	max-width: 30%;
+}

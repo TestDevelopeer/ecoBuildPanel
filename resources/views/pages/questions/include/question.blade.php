@@ -50,3 +50,8 @@
         </div>
     </div>
 </div>
+@section('pageScriptReload')
+    <!-- BEGIN: Page JS-->
+    <script src="/app-assets/js/scripts/extensions/ext-component-media-player.min.js"></script>
+    <!-- END: Page JS-->
+@endsection

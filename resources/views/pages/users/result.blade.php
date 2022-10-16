@@ -12,9 +12,69 @@
                         style="background-image: url('../../../app-assets/images/banner/banner.png')">
                         <div class="card-body text-center">
                             <!-- main title -->
-                            <h2 class="text-primary">Ваши результаты тестирования</h2>
+                            <h2 class="text-primary">Ваши результаты</h2>
                             <!-- subtitle -->
-                            <p class="card-text mb-2">Здесь собраны ваши результаты тестирования по всем темам</p>
+                            <p class="card-text mb-2">Здесь собраны результаты тестирования по всем темам</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card card-statistics">
+                                <div class="card-body statistics-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-12 mb-2 mb-md-0">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-primary me-2">
+                                                    <div class="avatar-content">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                            height="14" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trending-up avatar-icon">
+                                                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18">
+                                                            </polyline>
+                                                            <polyline points="17 6 23 6 23 12"></polyline>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0">{{ $user->percent_build }}
+                                                        баллов
+                                                    </h4>
+                                                    <p class="card-text font-small-3 mb-0">по
+                                                        строительству</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-12 mb-2 mb-sm-0">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-danger me-2">
+                                                    <div class="avatar-content">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                            height="14" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-box avatar-icon">
+                                                            <path
+                                                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                                            </path>
+                                                            <polyline points="3.27 6.96 12 12.01 20.73 6.96">
+                                                            </polyline>
+                                                            <line x1="12" y1="22.08" x2="12"
+                                                                y2="12"></line>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0">{{ $user->percent_eco }}
+                                                        баллов</h4>
+                                                    <p class="card-text font-small-3 mb-0">по
+                                                        экологии</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -75,23 +135,39 @@
                                             <div class="card accordion-item">
                                                 <h2 class="accordion-header" id="user_answer_{{ $build->id }}">
                                                     <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                        role="button" data-bs-target="#faq-payment-one"
-                                                        aria-expanded="false" aria-controls="faq-payment-one">
+                                                        role="button"
+                                                        data-bs-target="#user_answer_{{ $build->id }}_table"
+                                                        aria-expanded="false"
+                                                        aria-controls="user_answer_{{ $build->id }}_table">
                                                         {{ $build->question_text }}
                                                     </button>
                                                 </h2>
-                                                <div id="faq-payment-one" class="collapse accordion-collapse"
+                                                <div id="user_answer_{{ $build->id }}_table"
+                                                    class="collapse accordion-collapse question_answer"
                                                     aria-labelledby="user_answer_{{ $build->id }}"
                                                     data-bs-parent="#faq-payment-qna">
                                                     <div class="accordion-body">
-                                                        Pastry pudding cookie toffee bonbon jujubes jujubes powder topping.
-                                                        Jelly beans gummi bears sweet roll
-                                                        bonbon muffin liquorice. Wafer lollipop sesame snaps. Brownie
-                                                        macaroon cookie muffin cupcake candy
-                                                        caramels tiramisu. Oat cake chocolate cake sweet jelly-o brownie
-                                                        biscuit marzipan. Jujubes donut
-                                                        marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu
-                                                        icing cheesecake.
+                                                        @if ($build->question_type != 'text')
+                                                            <div class="mb-2 question_attach">
+                                                                @if ($build->question_type == 'image')
+                                                                    <img class="card-img-top"
+                                                                        src="/app-assets/images/slider/04.jpg"
+                                                                        alt="Card image cap">
+                                                                @elseif ($build->question_type == 'video')
+                                                                    <div class="video-player" id="plyr-video-player">
+                                                                        <iframe
+                                                                            src="https://www.youtube.com/embed/bTqVqk7FSmY"
+                                                                            allowfullscreen="" allow="autoplay"></iframe>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                        <div class="table-responsive">
+                                                            @include('pages.users.include.table-answers', [
+                                                                'answers' => $build->question_answers,
+                                                                'userAnswer' => $build->user_answer_id,
+                                                            ])
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,444 +191,48 @@
 
                                     <!-- frequent answer and question  collapse  -->
                                     <div class="accordion accordion-margin mt-2" id="faq-delivery-qna">
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="deliveryOne">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-delivery-one" aria-expanded="false"
-                                                    aria-controls="faq-delivery-one">
-                                                    Where has my order reached?
-                                                </button>
-                                            </h2>
+                                        @foreach ($allQuestions['eco'] as $eco)
+                                            <div class="card accordion-item">
+                                                <h2 class="accordion-header" id="user_answer_{{ $eco->id }}">
+                                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                        role="button"
+                                                        data-bs-target="#user_answer_{{ $eco->id }}_table"
+                                                        aria-expanded="false"
+                                                        aria-controls="user_answer_{{ $eco->id }}_table">
+                                                        {{ $eco->question_text }}
+                                                    </button>
+                                                </h2>
+                                                <div id="user_answer_{{ $eco->id }}_table"
+                                                    class="collapse accordion-collapse question_answer"
+                                                    aria-labelledby="user_answer_{{ $eco->id }}"
+                                                    data-bs-parent="#faq-payment-qna">
+                                                    <div class="accordion-body">
+                                                        @if ($eco->question_type != 'text')
+                                                            <div class="mb-2 question_attach">
+                                                                @if ($eco->question_type == 'image')
+                                                                    <img class="card-img-top"
+                                                                        src="/app-assets/images/slider/04.jpg"
+                                                                        alt="Card image cap">
+                                                                @elseif ($eco->question_type == 'video')
+                                                                    <div class="video-player" id="plyr-video-player">
+                                                                        <iframe
+                                                                            src="https://www.youtube.com/embed/bTqVqk7FSmY"
+                                                                            allowfullscreen="" allow="autoplay"></iframe>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                        <div class="table-responsive">
+                                                            @include('pages.users.include.table-answers', [
+                                                                'answers' => $eco->question_answers,
+                                                                'userAnswer' => $eco->user_answer_id,
+                                                            ])
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
 
-                                            <div id="faq-delivery-one" class="collapse accordion-collapse"
-                                                aria-labelledby="deliveryOne" data-bs-parent="#faq-delivery-qna">
-                                                <div class="accordion-body">
-                                                    Pastry pudding cookie toffee bonbon jujubes jujubes powder topping.
-                                                    Jelly beans gummi bears sweet roll
-                                                    bonbon muffin liquorice. Wafer lollipop sesame snaps. Brownie
-                                                    macaroon cookie muffin cupcake candy
-                                                    caramels tiramisu. Oat cake chocolate cake sweet jelly-o brownie
-                                                    biscuit marzipan. Jujubes donut
-                                                    marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu
-                                                    icing cheesecake.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <!-- cancellation return  -->
-                                <div class="tab-pane" id="faq-cancellation-return" role="tabpanel"
-                                    aria-labelledby="cancellation-return" aria-expanded="false">
-                                    <!-- icon and header -->
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-tag bg-light-primary me-1">
-                                            <i data-feather="refresh-cw" class="font-medium-4"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="mb-0">Cancellation & Return</h4>
-                                            <span>Which license do I need?</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- frequent answer and question  collapse  -->
-                                    <div class="accordion accordion-margin mt-2" id="faq-cancellation-qna">
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationOne">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-one"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-one">
-                                                    Can my security guard or neighbour receive my shipment if I am not
-                                                    available?
-                                                </button>
-                                            </h2>
-
-                                            <div id="faq-cancellation-one" class="collapse"
-                                                aria-labelledby="cancellationOne" data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    Pastry pudding cookie toffee bonbon jujubes jujubes powder topping.
-                                                    Jelly beans gummi bears sweet roll
-                                                    bonbon muffin liquorice. Wafer lollipop sesame snaps. Brownie
-                                                    macaroon cookie muffin cupcake candy
-                                                    caramels tiramisu. Oat cake chocolate cake sweet jelly-o brownie
-                                                    biscuit marzipan. Jujubes donut
-                                                    marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu
-                                                    icing cheesecake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationTwo">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-two"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-two">
-                                                    How can I get the contact number of my delivery agent?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-cancellation-two" class="collapse"
-                                                aria-labelledby="cancellationTwo" data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    Sweet pie candy jelly. Sesame snaps biscuit sugar plum. Sweet roll
-                                                    topping fruitcake. Caramels
-                                                    liquorice biscuit ice cream fruitcake cotton candy tart. Donut
-                                                    caramels gingerbread jelly-o
-                                                    gingerbread pudding. Gummi bears pastry marshmallow candy canes pie.
-                                                    Pie apple pie carrot cake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationThree">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-three"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-three">
-                                                    How can I cancel my shipment?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-cancellation-three" class="collapse"
-                                                aria-labelledby="cancellationThree"
-                                                data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    Tart gummies dragée lollipop fruitcake pastry oat cake. Cookie jelly
-                                                    jelly macaroon icing jelly beans
-                                                    soufflé cake sweet. Macaroon sesame snaps cheesecake tart cake sugar
-                                                    plum. Dessert jelly-o sweet
-                                                    muffin chocolate candy pie tootsie roll marzipan. Carrot cake
-                                                    marshmallow pastry. Bonbon biscuit
-                                                    pastry topping toffee dessert gummies. Topping apple pie pie
-                                                    croissant cotton candy dessert tiramisu.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationFour">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-four"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-four">
-                                                    I have received a defective/damaged product. What do I do?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-cancellation-four" class="collapse"
-                                                aria-labelledby="cancellationFour" data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    Cheesecake muffin cupcake dragée lemon drops tiramisu cake gummies
-                                                    chocolate cake. Marshmallow tart
-                                                    croissant. Tart dessert tiramisu marzipan lollipop lemon drops. Cake
-                                                    bonbon bonbon gummi bears topping
-                                                    jelly beans brownie jujubes muffin. Donut croissant jelly-o cake
-                                                    marzipan. Liquorice marzipan cookie
-                                                    wafer tootsie roll. Tootsie roll sweet cupcake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationFive">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-five"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-five">
-                                                    How do I change my delivery address?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-cancellation-five" class="collapse"
-                                                aria-labelledby="cancellationFive" data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et
-                                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                    exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum
-                                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                                    non proident, sunt in culpa qui
-                                                    officia deserunt mollit anim id est laborum.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationSix">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-six"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-six">
-                                                    What documents do I need to carry for self-collection of my
-                                                    shipment?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-cancellation-six" class="collapse"
-                                                aria-labelledby="cancellationSix" data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    At tempor commodo ullamcorper a lacus vestibulum. Ultrices neque
-                                                    ornare aenean euismod. Dui vivamus
-                                                    arcu felis bibendum. Turpis in eu mi bibendum neque egestas congue.
-                                                    Nullam ac tortor vitae purus
-                                                    faucibus ornare suspendisse sed. Commodo viverra maecenas accumsan
-                                                    lacus vel facilisis volutpat est
-                                                    velit. Tortor consequat id porta nibh. Id aliquet lectus proin nibh
-                                                    nisl condimentum id venenatis a.
-                                                    Faucibus nisl tincidunt eget nullam non nisi. Enim nunc faucibus a
-                                                    pellentesque. Pellentesque diam
-                                                    volutpat commodo sed egestas egestas fringilla phasellus. Nec nam
-                                                    aliquam sem et tortor consequat id.
-                                                    Fringilla est ullamcorper eget nulla facilisi. Morbi tristique
-                                                    senectus et netus et.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="cancellationSeven">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-cancellation-seven"
-                                                    aria-expanded="false" aria-controls="faq-cancellation-seven">
-                                                    What are the timings for self-collecting shipments from the
-                                                    Delhivery Branch?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-cancellation-seven" class="collapse"
-                                                aria-labelledby="cancellationSeven"
-                                                data-bs-parent="#faq-cancellation-qna">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et
-                                                    dolore magna aliqua. Euismod lacinia at quis risus sed vulputate
-                                                    odio ut enim. Dictum at tempor
-                                                    commodo ullamcorper a lacus vestibulum.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- my order -->
-                                <div class="tab-pane" id="faq-my-order" role="tabpanel" aria-labelledby="my-order"
-                                    aria-expanded="false">
-                                    <!-- icon and header -->
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-tag bg-light-primary me-1">
-                                            <i data-feather="package" class="font-medium-4"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="mb-0">My Orders</h4>
-                                            <span>Which license do I need?</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- frequent answer and question  collapse  -->
-                                    <div class="accordion accordion-margin mt-2" id="faq-my-order-qna">
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="myOrderOne">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-my-order-one"
-                                                    aria-expanded="false" aria-controls="faq-my-order-one">
-                                                    Can I avail of an open delivery?
-                                                </button>
-                                            </h2>
-
-                                            <div id="faq-my-order-one" class="collapse accordion-collapse"
-                                                aria-labelledby="myOrderOne" data-bs-parent="#faq-my-order-qna">
-                                                <div class="accordion-body">
-                                                    Pastry pudding cookie toffee bonbon jujubes jujubes powder topping.
-                                                    Jelly beans gummi bears sweet roll
-                                                    bonbon muffin liquorice. Wafer lollipop sesame snaps. Brownie
-                                                    macaroon cookie muffin cupcake candy
-                                                    caramels tiramisu. Oat cake chocolate cake sweet jelly-o brownie
-                                                    biscuit marzipan. Jujubes donut
-                                                    marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu
-                                                    icing cheesecake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="myOrderTwo">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-my-order-two"
-                                                    aria-expanded="false" aria-controls="faq-my-order-two">
-                                                    I haven’t received the refund of my returned shipment. What do I do?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-my-order-two" class="collapse accordion-collapse"
-                                                aria-labelledby="myOrderTwo" data-bs-parent="#faq-my-order-qna">
-                                                <div class="accordion-body">
-                                                    Sweet pie candy jelly. Sesame snaps biscuit sugar plum. Sweet roll
-                                                    topping fruitcake. Caramels
-                                                    liquorice biscuit ice cream fruitcake cotton candy tart. Donut
-                                                    caramels gingerbread jelly-o
-                                                    gingerbread pudding. Gummi bears pastry marshmallow candy canes pie.
-                                                    Pie apple pie carrot cake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="myOrderThree">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-my-order-three"
-                                                    aria-expanded="false" aria-controls="faq-my-order-three">
-                                                    How can I ship my order to an international location?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-my-order-three" class="collapse" aria-labelledby="myOrderThree"
-                                                data-bs-parent="#faq-my-order-qna">
-                                                <div class="accordion-body">
-                                                    Tart gummies dragée lollipop fruitcake pastry oat cake. Cookie jelly
-                                                    jelly macaroon icing jelly beans
-                                                    soufflé cake sweet. Macaroon sesame snaps cheesecake tart cake sugar
-                                                    plum. Dessert jelly-o sweet
-                                                    muffin chocolate candy pie tootsie roll marzipan. Carrot cake
-                                                    marshmallow pastry. Bonbon biscuit
-                                                    pastry topping toffee dessert gummies. Topping apple pie pie
-                                                    croissant cotton candy dessert tiramisu.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="myOrderFour">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-my-order-four"
-                                                    aria-expanded="false" aria-controls="faq-my-order-four">
-                                                    I missed the delivery of my order today. What should I do?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-my-order-four" class="collapse" aria-labelledby="myOrderFour"
-                                                data-bs-parent="#faq-my-order-qna">
-                                                <div class="accordion-body">
-                                                    Cheesecake muffin cupcake dragée lemon drops tiramisu cake gummies
-                                                    chocolate cake. Marshmallow tart
-                                                    croissant. Tart dessert tiramisu marzipan lollipop lemon drops. Cake
-                                                    bonbon bonbon gummi bears topping
-                                                    jelly beans brownie jujubes muffin. Donut croissant jelly-o cake
-                                                    marzipan. Liquorice marzipan cookie
-                                                    wafer tootsie roll. Tootsie roll sweet cupcake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="myOrderFive">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-my-order-five"
-                                                    aria-expanded="false" aria-controls="faq-my-order-five">
-                                                    The delivery of my order is delayed. What should I do?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-my-order-five" class="collapse" aria-labelledby="myOrderFive"
-                                                data-bs-parent="#faq-my-order-qna">
-                                                <div class="accordion-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et
-                                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                    exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum
-                                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                                    non proident, sunt in culpa qui
-                                                    officia deserunt mollit anim id est laborum.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- product services -->
-                                <div class="tab-pane" id="faq-product-services" role="tabpanel"
-                                    aria-labelledby="product-services" aria-expanded="false">
-                                    <!-- icon and header -->
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-tag bg-light-primary me-1">
-                                            <i data-feather="settings" class="font-medium-4"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="mb-0">Product & Services</h4>
-                                            <span>Which license do I need?</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- frequent answer and question  collapse  -->
-                                    <div class="accordion accordion-margin mt-2" id="faq-product-qna">
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="productOne">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-product-one"
-                                                    aria-expanded="false" aria-controls="faq-product-one">
-                                                    How can I register a complaint against the courier executive who
-                                                    came to deliver my order?
-                                                </button>
-                                            </h2>
-
-                                            <div id="faq-product-one" class="collapse accordion-collapse"
-                                                aria-labelledby="productOne" data-bs-parent="#faq-product-qna">
-                                                <div class="accordion-body">
-                                                    Pastry pudding cookie toffee bonbon jujubes jujubes powder topping.
-                                                    Jelly beans gummi bears sweet roll
-                                                    bonbon muffin liquorice. Wafer lollipop sesame snaps. Brownie
-                                                    macaroon cookie muffin cupcake candy
-                                                    caramels tiramisu. Oat cake chocolate cake sweet jelly-o brownie
-                                                    biscuit marzipan. Jujubes donut
-                                                    marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu
-                                                    icing cheesecake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="productTwo">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-product-two"
-                                                    aria-expanded="false" aria-controls="faq-product-two">
-                                                    The status for my shipment shows as ‘not picked up’. What do I do?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-product-two" class="collapse accordion-collapse"
-                                                aria-labelledby="productTwo" data-bs-parent="#faq-product-qna">
-                                                <div class="accordion-body">
-                                                    Sweet pie candy jelly. Sesame snaps biscuit sugar plum. Sweet roll
-                                                    topping fruitcake. Caramels
-                                                    liquorice biscuit ice cream fruitcake cotton candy tart. Donut
-                                                    caramels gingerbread jelly-o
-                                                    gingerbread pudding. Gummi bears pastry marshmallow candy canes pie.
-                                                    Pie apple pie carrot cake.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="productThree">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-product-three"
-                                                    aria-expanded="false" aria-controls="faq-product-three">
-                                                    How can I get a proof of delivery for my shipment?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-product-three" class="collapse" aria-labelledby="productThree"
-                                                data-bs-parent="#faq-product-qna">
-                                                <div class="accordion-body">
-                                                    Tart gummies dragée lollipop fruitcake pastry oat cake. Cookie jelly
-                                                    jelly macaroon icing jelly beans
-                                                    soufflé cake sweet. Macaroon sesame snaps cheesecake tart cake sugar
-                                                    plum. Dessert jelly-o sweet
-                                                    muffin chocolate candy pie tootsie roll marzipan. Carrot cake
-                                                    marshmallow pastry. Bonbon biscuit
-                                                    pastry topping toffee dessert gummies. Topping apple pie pie
-                                                    croissant cotton candy dessert tiramisu.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="productFour">
-                                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                    role="button" data-bs-target="#faq-product-four"
-                                                    aria-expanded="false" aria-controls="faq-product-four">
-                                                    How can I avail your services?
-                                                </button>
-                                            </h2>
-                                            <div id="faq-product-four" class="collapse accordion-collapse"
-                                                aria-labelledby="productFour" data-bs-parent="#faq-product-qna">
-                                                <div class="accordion-body">
-                                                    Cheesecake muffin cupcake dragée lemon drops tiramisu cake gummies
-                                                    chocolate cake. Marshmallow tart
-                                                    croissant. Tart dessert tiramisu marzipan lollipop lemon drops. Cake
-                                                    bonbon bonbon gummi bears topping
-                                                    jelly beans brownie jujubes muffin. Donut croissant jelly-o cake
-                                                    marzipan. Liquorice marzipan cookie
-                                                    wafer tootsie roll. Tootsie roll sweet cupcake.
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -560,42 +240,6 @@
                     </div>
                 </section>
                 <!-- / frequently asked questions tabs pills -->
-
-                <!-- contact us -->
-                <section class="faq-contact">
-                    <div class="row mt-5 pt-75">
-                        <div class="col-12 text-center">
-                            <h2>You still have a question?</h2>
-                            <p class="mb-3">
-                                If you cannot find a question in our FAQ, you can always contact us. We will answer to
-                                you shortly!
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card text-center faq-contact-card shadow-none py-1">
-                                <div class="accordion-body">
-                                    <div class="avatar avatar-tag bg-light-primary mb-2 mx-auto">
-                                        <i data-feather="phone-call" class="font-medium-3"></i>
-                                    </div>
-                                    <h4>+ (810) 2548 2568</h4>
-                                    <span class="text-body">We are always happy to help!</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card text-center faq-contact-card shadow-none py-1">
-                                <div class="accordion-body">
-                                    <div class="avatar avatar-tag bg-light-primary mb-2 mx-auto">
-                                        <i data-feather="mail" class="font-medium-3"></i>
-                                    </div>
-                                    <h4>hello@help.com</h4>
-                                    <span class="text-body">Best way to get answer faster!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--/ contact us -->
 
             </div>
         </div>

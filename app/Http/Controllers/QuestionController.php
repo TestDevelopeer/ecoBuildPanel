@@ -61,12 +61,13 @@ class QuestionController extends Controller
 			$questions = session()->get('questions');
 			$currentQuestion = session()->get('currentQuestion');
 			$questionId = $questions[$currentQuestion];
-			$asnwerId = $request->currAnswerId;
+			$answerId = $request->currAnswerId;
 			$userId = $user->id;
+			$count = 10;
 			if (session()->has('answers')) {
 				session()->push('answers', [
 					'questionId' => $questionId,
-					'asnwerId' => $asnwerId,
+					'answerId' => $answerId,
 					'userId' => $userId
 				]);
 			}
@@ -80,7 +81,7 @@ class QuestionController extends Controller
 					$res['question'] = view('pages.questions.include.question', [
 						'question' => $question,
 						'currentQuestion' => $currentQuestion,
-						'count' => 10,
+						'count' => $count,
 					])->render();
 					session()->put('currentQuestion', $currentQuestion);
 				} else {
@@ -96,11 +97,21 @@ class QuestionController extends Controller
 					$isEnd = $user->end_test_build_date;
 				}
 				if ($isEnd == NULL) {
+					$cntTrueAnswersUser = 0;
 					foreach ($answers as $key => $value) {
-						$saveAnswers = $this->answer->saveUserAnswer($value['questionId'], $value['asnwerId'], $value['userId']);
+						$isAnswerTrue = $this->answer->checkIsAnswerTrue($value['answerId']);
+						if ($isAnswerTrue->answer_true == 1) {
+							$cntTrueAnswersUser++;
+						}
+						$saveAnswers = $this->answer->saveUserAnswer($value['questionId'], $value['answerId'], $value['userId']);
 					}
 					if ($saveAnswers) {
-						$this->users->setEndTestDate($user->id, $type);
+						$percentForOneQuestion = round(100 / $count, 3);
+						$percent = round($cntTrueAnswersUser * $percentForOneQuestion, 2);
+						if ($percent > 99.89) {
+							$percent = ceil($percent);
+						}
+						$this->users->setEndTestDate($user->id, $type, $percent);
 					}
 				} else {
 					$res['success'] = 0;

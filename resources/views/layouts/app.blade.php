@@ -76,6 +76,7 @@
         }
     })
 </script>
+@yield('pageScriptReload')
 </body>
 
 </html>

@@ -21,7 +21,7 @@ Route::middleware(['auth', 'isAuth'])->group(function () {
 	});
 
 	Route::get('/questions/{type}', [QuestionController::class, 'Index'])->name('questions');
-	Route::post('/questions/save', [QuestionController::class, 'save'])->name('questions');
+	Route::post('/questions/save', [QuestionController::class, 'save'])->name('questions-post');
 
 	Route::get('/user/result', [UsersController::class, 'Result'])->name('result');
 });
