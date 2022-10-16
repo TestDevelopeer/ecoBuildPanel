@@ -63,7 +63,16 @@ class RegisteredUserController extends Controller
 			'sex' => $request->sex,
 			'ip' => $this->users->getIp()
 		]);
-
+		if ($user->id) {
+			$ecoUserCert = resource_path() . "/users/{$user->id}/eco";
+			$buildUserCert = resource_path() . "/users/{$user->id}/build";
+			if (!is_dir($ecoUserCert)) {
+				mkdir($ecoUserCert, 0777, true);
+			}
+			if (!is_dir($buildUserCert)) {
+				mkdir($buildUserCert, 0777, true);
+			}
+		}
 		event(new Registered($user));
 
 		Auth::login($user);

@@ -24,5 +24,6 @@ Route::middleware(['auth', 'isAuth'])->group(function () {
 	Route::post('/questions/save', [QuestionController::class, 'save'])->name('questions-post');
 
 	Route::get('/user/result', [UsersController::class, 'Result'])->name('result');
+	Route::get('/testImg', [QuestionController::class, 'createDiplom'])->name('create');
 });
 require __DIR__ . '/auth.php';

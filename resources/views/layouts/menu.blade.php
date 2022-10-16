@@ -73,19 +73,19 @@
                 <li class="dropdown nav-item" data-menu="dropdown"><a
                         class="dropdown-toggle nav-link d-flex align-items-center" href="#"
                         data-bs-toggle="dropdown"><i data-feather="package"></i><span
-                            data-i18n="Apps">Apps</span></a>
+                            data-i18n="Apps">Результаты</span></a>
                     <ul class="dropdown-menu" data-bs-popper="none">
                         <li class="active" data-menu=""><a class="dropdown-item d-flex align-items-center"
                                 href="app-email.html" data-bs-toggle="" data-i18n="Email"><i
-                                    data-feather="mail"></i><span data-i18n="Email">Email</span></a>
+                                    data-feather="mail"></i><span data-i18n="Email">Тестирование</span></a>
                         </li>
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-chat.html"
                                 data-bs-toggle="" data-i18n="Chat"><i data-feather="message-square"></i><span
-                                    data-i18n="Chat">Chat</span></a>
+                                    data-i18n="Chat">Дипломы</span></a>
                         </li>
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-todo.html"
                                 data-bs-toggle="" data-i18n="Todo"><i data-feather="check-square"></i><span
-                                    data-i18n="Todo">Todo</span></a>
+                                    data-i18n="Todo">Креативное задание</span></a>
                         </li>
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center"
                                 href="app-calendar.html" data-bs-toggle="" data-i18n="Calendar"><i

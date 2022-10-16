@@ -112,6 +112,14 @@ class QuestionController extends Controller
 							$percent = ceil($percent);
 						}
 						$this->users->setEndTestDate($user->id, $type, $percent);
+						$this->createCertificate($user->last_name . " " . $user->first_name, $user->id, $type);
+						if ($percent >= 40 && $percent <= 60) {
+							$this->createDiplom($user->last_name, $user->first_name, $user->id, $type, 'III');
+						} else if ($percent > 60 && $percent <= 80) {
+							$this->createDiplom($user->last_name, $user->first_name, $user->id, $type, 'II');
+						} else if ($percent > 80) {
+							$this->createDiplom($user->last_name, $user->first_name, $user->id, $type, 'I');
+						}
 					}
 				} else {
 					$res['success'] = 0;
@@ -124,5 +132,89 @@ class QuestionController extends Controller
 		}
 
 		echo json_encode($res, JSON_UNESCAPED_UNICODE);
+	}
+
+	public function createCertificate($name, $id, $type)
+	{
+		// наше изображение
+		switch ($type) {
+			case 'eco':
+				$img = ImageCreateFromJPEG(config('certificate-diplom.ecoCertificate'));
+				$userPath = resource_path() . "/users/{$id}/eco/certificate.jpg";
+				break;
+			case 'build':
+				$img = ImageCreateFromJPEG(config('certificate-diplom.buildCertificate'));
+				$userPath = resource_path() . "/users/{$id}/build/certificate.jpg";
+				break;
+			default:
+				# code...
+				break;
+		}
+
+		// определяем цвет, в RGB
+		$color = imagecolorallocate($img, 29, 37, 43);
+
+		// указываем путь к шрифту
+		$font = config('certificate-diplom.fontBebas');
+
+		imagettftext($img, 100, 0, 820, 1050, $color, $font, $name);
+		// 24 - размер шрифта
+		// 0 - угол поворота
+		// 365 - смещение по горизонтали
+		// 159 - смещение по вертикали
+		imagejpeg($img, $userPath, 100);
+		/*$image = 'templates/images/users/' . $id . '/certificate.jpg';
+		$pdf = new Imagick($image);
+
+		$pdf->setImageFormat('pdf');
+		$pdf->writeImages('templates/images/users/' . $id . '/certificate.pdf', true);*/
+		imagedestroy($img);
+	}
+
+	public function createDiplom($lastName, $firstName, $id, $type, $degree)
+	{
+
+		switch ($type) {
+			case 'eco':
+				$image_path = config('certificate-diplom.ecoDiplom');
+				$userPath = resource_path() . "/users/{$id}/eco/diplom.jpg";
+				break;
+			case 'build':
+				$image_path = config('certificate-diplom.buildDiplom');
+				$userPath = resource_path() . "/users/{$id}/build/diplom.jpg";
+				break;
+			default:
+				# code...
+				break;
+		}
+
+		$size = getimagesize($image_path); //Узнаем размер изображения
+		$imageWidth = (int) $size[0]; // ширина
+		$img = ImageCreateFromJPEG($image_path); // наше изображение шаблон
+		$color = imagecolorallocate($img, 0, 0, 0); // определяем цвет шрифта, в RGB
+		$fontBold = config('certificate-diplom.fontArialBold'); // указываем путь к шрифту жирному
+		$font_size = 48; // указываем размер шрифта
+
+		if ($degree == 'II' || $degree == 'I') { // у разных типов диплома немного отличается отступ
+			$left = 500;
+		} else {
+			$left = 488;
+		}
+
+		imagettftext($img, $font_size, 0, $left, 685, $color, $fontBold, $degree);
+
+		// текст по центру фамилия
+		$box = imagettfbbox($font_size, 0, $fontBold, $lastName);
+		$x = ($imageWidth / 2) - ($box[2] - $box[0]) / 2; //по оси x, погрешность 9
+		imagettftext($img, $font_size, 0, $x - 9, 1118, $color, $fontBold, $lastName);
+
+		// текст по центру имя отчество
+		$box = imagettfbbox($font_size, 0, $fontBold, $firstName);
+		$x = ($imageWidth / 2) - ($box[2] - $box[0]) / 2; //по оси x, погрешность 9
+		imagettftext($img, $font_size, 0, $x - 9, 1198, $color, $fontBold, $firstName);
+
+		imagejpeg($img, $userPath, 100);
+
+		imagedestroy($img);
 	}
 }
